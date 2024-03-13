@@ -40,7 +40,11 @@ export class PostsService {
     });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} post`;
+  async remove(id: number) {
+    return await this.prisma.post.delete({
+      where : {
+        id: id
+      }
+    });
   }
 }
